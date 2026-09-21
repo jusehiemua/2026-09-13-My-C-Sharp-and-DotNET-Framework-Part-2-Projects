@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Policy;
 
-namespace Module1ConsoleAppArrayAssignment
+
+namespace Module_1_ConsoleAppArrayAssignment
 {
     internal class Program
     {
@@ -50,7 +49,7 @@ namespace Module1ConsoleAppArrayAssignment
             {
                 //3.Add in a message that displays when the user selects an index that doesn’t exist.
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("The index position " +  selectedIndex + " does not exist in the string Array!!!");
+                Console.Write("The index position " + selectedIndex + " does not exist in the string Array!!!");
 
                 Console.ResetColor();
                 Console.WriteLine();

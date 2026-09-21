@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F63695E-0BC5-416D-8AAC-2FBBD55153EC}</ProjectGuid>
+    <ProjectGuid>{A1C0B258-AC39-4378-9596-E57641490238}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Module1ConsoleAppArrayAssignment</RootNamespace>
-    <AssemblyName>Module1ConsoleAppArrayAssignment</AssemblyName>
+    <RootNamespace>Module_1_ConsoleAppArrayAssignment</RootNamespace>
+    <AssemblyName>Module_1_ConsoleAppArrayAssignment</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
