@@ -1,0 +1,198 @@
+@model Module_12B_CarInsurance.Models.Insuree
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Insuree</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" required type="email" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                <div id="emailMessage" class="text-danger" role="alert" hidden></div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                <div id="ageMessage" class="text-danger" role="alert" hidden></div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CarYear" class="control-label"></label>
+                <input asp-for="CarYear" class="form-control" />
+                <span asp-validation-for="CarYear" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CarMake" class="control-label"></label>
+                <input asp-for="CarMake" class="form-control" />
+                <span asp-validation-for="CarMake" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CarModel" class="control-label"></label>
+                <input asp-for="CarModel" class="form-control" />
+                <span asp-validation-for="CarModel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DUI" class="control-label"></label>
+                <input asp-for="DUI" class="form-check-input" />
+                <span asp-validation-for="DUI" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SpeedingTickets" class="control-label"></label>
+                <input asp-for="SpeedingTickets" class="form-control" />
+                <span asp-validation-for="SpeedingTickets" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CoverageType" class="control-label"></label>
+                @*<input asp-for="CoverageType" class="form-control" />*@
+                <select asp-for="CoverageType" class="form-control">
+                    <option value="">Select coverage</option>
+                    <option value="Liability">Liability</option>
+                    <option value="Full Coverage">Full Coverage</option>
+                </select>
+                <span asp-validation-for="CoverageType" class="text-danger"></span>
+            </div>
+            @*
+            <div class="form-group">
+                <label asp-for="Quote" class="control-label"></label>
+                <input asp-for="Quote" class="form-control" />
+                <span asp-validation-for="Quote" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*@section Scripts {
+    <script>
+        const dateOfBirthInput = document.getElementById("DateOfBirth");
+        const ageMessage = document.getElementById("ageMessage");
+
+        function checkAge() {
+            const datePart = dateOfBirthInput.value.slice(0, 10);
+
+            if (!datePart) {
+                ageMessage.textContent = "";
+                ageMessage.hidden = true;
+                return;
+            }
+
+            const [year, month, day] = datePart.split("-").map(Number);
+            const today = new Date();
+
+            let age = today.getFullYear() - year;
+
+            if (today.getMonth() + 1 < month ||
+                (today.getMonth() + 1 === month && today.getDate() < day)) {
+                age--;
+            }
+
+            if (age < 16) {
+                ageMessage.textContent =
+                    "You must be at least 16 to request a car insurance quote.";
+                ageMessage.hidden = false;
+            } else {
+                ageMessage.textContent = "";
+                ageMessage.hidden = true;
+            }
+        }
+
+        dateOfBirthInput.addEventListener("input", checkAge);
+        dateOfBirthInput.addEventListener("change", checkAge);
+    </script>*@
+
+@section Scripts {
+    <script>
+    const dateOfBirthInput = document.getElementById("DateOfBirth");
+    const ageMessage = document.getElementById("ageMessage");
+
+    function checkAge() {
+        ageMessage.textContent = "";
+        ageMessage.hidden = true;
+
+        if (!dateOfBirthInput.value) {
+            return;
+        }
+
+        const parts = dateOfBirthInput.value.slice(0, 10).split("-");
+        const birthDate = new Date(
+            Number(parts[0]),
+            Number(parts[1]) - 1,
+            Number(parts[2])
+        );
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+        if (
+            today.getMonth() < birthDate.getMonth() ||
+            (today.getMonth() === birthDate.getMonth() &&
+             today.getDate() < birthDate.getDate())
+        ) {
+            age--;
+        }
+
+        if (birthDate >= today) {
+            ageMessage.textContent =
+                "You are not eligible to request a car insurance quote if you are born today or in the future.";
+            ageMessage.hidden = false;
+        }
+        else if (age < 16) {
+            ageMessage.textContent =
+                "You must be at least 16 to request a car insurance quote.";
+            ageMessage.hidden = false;
+        }
+    }
+
+    dateOfBirthInput.addEventListener("input", checkAge);
+    dateOfBirthInput.addEventListener("change", checkAge);
+</script>
+    <script>
+        const emailInput = document.getElementById("EmailAddress");
+        const emailMessage = document.getElementById("emailMessage");
+
+        emailInput.addEventListener("input", function () {
+            if (emailInput.value !== "" && !emailInput.validity.valid) {
+                emailMessage.textContent = "Enter a valid email address.";
+                emailMessage.hidden = false;
+            } else {
+                emailMessage.textContent = "";
+                emailMessage.hidden = true;
+            }
+        });
+    </script>
+
+}
