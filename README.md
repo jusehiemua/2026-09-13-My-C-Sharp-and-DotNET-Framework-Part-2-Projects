@@ -2,10 +2,10 @@
 
 Main Projects:
 ===============
-Project: BlackJack Game  
-Description: A card game application simulating the classic casino game with automated dealer logic and scoring.  
-Tools: C#  
-
+Project:  BlackJack Game  
+Description:  A card game application simulating the classic casino game with automated dealer logic and scoring.    
+Tools:  C#    
+  
 Project: CarInsurance
 Description: A web application that calculates and manages user insurance quotes based on profile risk factors.
 Tools: C#, ASP.NET Core MVC, SQL Server
