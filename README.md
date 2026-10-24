@@ -1,7 +1,7 @@
 ﻿# 2026-09-13-My-C-Sharp-and-DotNET-Framework-Part-2-Projects
 
-Main Projects:
-===============
+Main C# and .NET Framework Projects:
+====================================
 Project:  BlackJack Game  
 Description:  A card game application simulating the classic casino game with automated dealer logic and scoring.    
 Tools:  C#    
