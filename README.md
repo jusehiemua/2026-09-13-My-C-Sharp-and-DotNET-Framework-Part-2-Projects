@@ -2,7 +2,7 @@
 
 Main Projects:
 ===============
-Project: BlackJack Game<b>
+Project: BlackJack Game
 Description: A card game application simulating the classic casino game with automated dealer logic and scoring.
 Tools: C#
 
